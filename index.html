@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Sura Image</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<style>
+body {margin:0; font-family:Poppins; background:#0a0a0a; color:white;}
+.hero {height:100vh; display:flex; align-items:center; justify-content:center; text-align:center; background:black;}
+h1 {font-size:60px;}
+.btn {border:2px solid gold; padding:10px 20px; color:gold; text-decoration:none;}
+.section {padding:80px 10%;}
+.gallery {display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:10px;}
+.gallery img {width:100%; height:300px; object-fit:cover;}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div>
+    <h1 id="title">SURA IMAGE</h1>
+    <p id="tagline">Where Every Frame Becomes Timeless</p>
+    <a href="#portfolio" class="btn">View Work</a>
+  </div>
+</div>
+
+<div class="section" id="portfolio">
+  <h2>Portfolio</h2>
+  <div class="gallery" id="gallery"></div>
+</div>
+
+<script>
+const data = JSON.parse(localStorage.getItem("suraData")) || {
+  title:"SURA IMAGE",
+  tagline:"Where Every Frame Becomes Timeless",
+  images:[]
+};
+
+document.getElementById("title").innerText = data.title;
+document.getElementById("tagline").innerText = data.tagline;
+
+const gallery = document.getElementById("gallery");
+data.images.forEach(src=>{
+  let img = document.createElement("img");
+  img.src = src;
+  gallery.appendChild(img);
+});
+</script>
+
+</body>
+</html>
